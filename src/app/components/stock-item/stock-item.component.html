@@ -1,0 +1,15 @@
+<div class="cell">
+  <span>{{ stock.name }}</span>
+  <p class="symbol">{{ stock.symbol }}</p>
+</div>
+<div class="cell">
+  <span>{{ stock.price | currency }}</span>
+</div>
+<div class="cell">
+  <span>{{ stock.currentPrice | currency }}</span>
+</div>
+<div class="cell price-change" [ngClass]="priceRaised() ? 'rise' : 'fail'">
+  <span>{{ calculatePriceDifference() | currency }}</span>
+  <mat-icon class="icon-arrow">{{ priceRaised() ? 'arrow_drop_up' : 'arrow_drop_down'}}</mat-icon>
+  <span>{{ calculatePriceDifferencePercentage() | percent: '.2' }}</span>
+</div>

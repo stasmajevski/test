@@ -1,0 +1,36 @@
+<div class="limiter">
+  <div class="container">
+    <div class="wrap">
+      <div *ngIf="loader$ | async" class="loader-container">
+        <mat-spinner appCustomSpinnerDirective color="#222D39"></mat-spinner>
+      </div>
+      <div class="simulate">
+        <div class="day">
+          <p>Day {{ dayCount$ | async }}</p>
+          <button class="btn-pass-day" (click)="calculateCurrentPrice()">Pass day</button>
+        </div>
+        <div class="date">
+          <p>{{ date$ | async | date: 'fullDate' }}</p>
+        </div>
+      </div>
+      <div class="table">
+        <div class="row header">
+          <div class="cell">
+            Name
+          </div>
+          <div class="cell">
+            Price
+          </div>
+          <div class="cell">
+            Current Price
+          </div>
+          <div class="cell">
+            Change
+          </div>
+        </div>
+        <div class="row" [app-stock-item]="stock" *ngFor="let stock of stocks$ | async"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
